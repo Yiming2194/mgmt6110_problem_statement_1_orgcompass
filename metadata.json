@@ -1,0 +1,6 @@
+{
+  "name": "OrgCompass",
+  "description": "Executive talent and organization alignment tool for Singapore logistics leadership.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
