@@ -156,6 +156,66 @@ export const Screen2ExecutiveSummary: React.FC<Screen2Props> = ({
         </div>
       </div>
 
+      {/* SYNTHESIS COMPARISON TABLE (High-density review for Board & CEO) */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm overflow-hidden">
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1">
+          Executive Action Matrix at a Glance
+        </h3>
+        <p className="text-xs text-slate-500 mb-4">
+          Direct alignment between selected organizational friction and business priority outcomes.
+        </p>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="bg-slate-900 text-white">
+                <th className="p-3 rounded-tl-lg font-bold">Rank & Priority</th>
+                <th className="p-3 font-bold">Focus Area Friction</th>
+                <th className="p-3 font-bold">Talent / Org Action</th>
+                <th className="p-3 font-bold">Lead Owner</th>
+                <th className="p-3 font-bold">Timeline</th>
+                <th className="p-3 rounded-tr-lg font-bold">Success KPI</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200">
+              {rankedPoints.map((item, idx) => (
+                <tr key={item.id} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
+                  <td className="p-3 font-bold text-slate-900 whitespace-nowrap">
+                    <span className="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 mr-1.5 font-black">
+                      #{idx + 1}
+                    </span>
+                    {item.priorityCode}
+                  </td>
+                  <td className="p-3 font-semibold text-slate-800 max-w-[200px]">
+                    {item.title}
+                    <span className="block text-[11px] font-normal text-slate-500">
+                      {item.location}
+                    </span>
+                  </td>
+                  <td className="p-3 font-medium text-slate-900 max-w-[220px]">
+                    {item.recommendedAction.title}
+                    <span className="block text-[10px] text-amber-700 font-bold uppercase">
+                      {item.recommendedAction.actionCategory}
+                    </span>
+                  </td>
+                  <td className="p-3 text-slate-700 font-medium whitespace-nowrap">
+                    {item.recommendedAction.leadOwner}
+                  </td>
+                  <td className="p-3 whitespace-nowrap">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900">
+                      {item.recommendedAction.implementationHorizon.split(' ')[0]}
+                    </span>
+                  </td>
+                  <td className="p-3 text-slate-700 font-medium max-w-[220px]">
+                    {item.recommendedAction.targetKpi}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* DETAILED CARDS FOR THE 3 SELECTED FOCUS AREAS */}
       <div className="space-y-6">
         <div className="flex items-center justify-between">
@@ -309,66 +369,6 @@ export const Screen2ExecutiveSummary: React.FC<Screen2Props> = ({
           );
         })}
       </div>
-
-      {/* SYNTHESIS COMPARISON TABLE (High-density review for Board & CEO) */}
-      <section className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm overflow-hidden">
-        <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1">
-          Executive Action Matrix at a Glance
-        </h3>
-        <p className="text-xs text-slate-500 mb-4">
-          Direct alignment between selected organizational friction and business priority outcomes.
-        </p>
-
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr className="bg-slate-900 text-white">
-                <th className="p-3 rounded-tl-lg font-bold">Rank & Priority</th>
-                <th className="p-3 font-bold">Focus Area Friction</th>
-                <th className="p-3 font-bold">Talent / Org Action</th>
-                <th className="p-3 font-bold">Lead Owner</th>
-                <th className="p-3 font-bold">Timeline</th>
-                <th className="p-3 rounded-tr-lg font-bold">Success KPI</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              {rankedPoints.map((item, idx) => (
-                <tr key={item.id} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
-                  <td className="p-3 font-bold text-slate-900 whitespace-nowrap">
-                    <span className="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 mr-1.5 font-black">
-                      #{idx + 1}
-                    </span>
-                    {item.priorityCode}
-                  </td>
-                  <td className="p-3 font-semibold text-slate-800 max-w-[200px]">
-                    {item.title}
-                    <span className="block text-[11px] font-normal text-slate-500">
-                      {item.location}
-                    </span>
-                  </td>
-                  <td className="p-3 font-medium text-slate-900 max-w-[220px]">
-                    {item.recommendedAction.title}
-                    <span className="block text-[10px] text-amber-700 font-bold uppercase">
-                      {item.recommendedAction.actionCategory}
-                    </span>
-                  </td>
-                  <td className="p-3 text-slate-700 font-medium whitespace-nowrap">
-                    {item.recommendedAction.leadOwner}
-                  </td>
-                  <td className="p-3 whitespace-nowrap">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900">
-                      {item.recommendedAction.implementationHorizon.split(' ')[0]}
-                    </span>
-                  </td>
-                  <td className="p-3 text-slate-700 font-medium max-w-[220px]">
-                    {item.recommendedAction.targetKpi}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
 
       {/* Bottom Back Button */}
       <div className="flex justify-center pt-4">
