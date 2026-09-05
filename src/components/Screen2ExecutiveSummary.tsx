@@ -169,7 +169,8 @@ export const Screen2ExecutiveSummary: React.FC<Screen2Props> = ({
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-slate-900 text-white">
-                <th className="p-3 rounded-tl-lg font-bold">Rank & Priority</th>
+                <th className="p-3 rounded-tl-lg font-bold whitespace-nowrap">Rank</th>
+                <th className="p-3 font-bold min-w-[200px]">Driven Business Priority</th>
                 <th className="p-3 font-bold">Focus Area Friction</th>
                 <th className="p-3 font-bold">Talent / Org Action</th>
                 <th className="p-3 font-bold">Lead Owner</th>
@@ -178,39 +179,54 @@ export const Screen2ExecutiveSummary: React.FC<Screen2Props> = ({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
-              {rankedPoints.map((item, idx) => (
-                <tr key={item.id} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
-                  <td className="p-3 font-bold text-slate-900 whitespace-nowrap">
-                    <span className="px-1.5 py-0.5 rounded bg-amber-500 text-slate-950 mr-1.5 font-black">
-                      #{idx + 1}
-                    </span>
-                    {item.priorityCode}
-                  </td>
-                  <td className="p-3 font-semibold text-slate-800 max-w-[200px]">
-                    {item.title}
-                    <span className="block text-[11px] font-normal text-slate-500">
-                      {item.location}
-                    </span>
-                  </td>
-                  <td className="p-3 font-medium text-slate-900 max-w-[220px]">
-                    {item.recommendedAction.title}
-                    <span className="block text-[10px] text-amber-700 font-bold uppercase">
-                      {item.recommendedAction.actionCategory}
-                    </span>
-                  </td>
-                  <td className="p-3 text-slate-700 font-medium whitespace-nowrap">
-                    {item.recommendedAction.leadOwner}
-                  </td>
-                  <td className="p-3 whitespace-nowrap">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900">
-                      {item.recommendedAction.implementationHorizon.split(' ')[0]}
-                    </span>
-                  </td>
-                  <td className="p-3 text-slate-700 font-medium max-w-[220px]">
-                    {item.recommendedAction.targetKpi}
-                  </td>
-                </tr>
-              ))}
+              {rankedPoints.map((item, idx) => {
+                const priority = priorities.find((p) => p.id === item.priorityId);
+                return (
+                  <tr key={item.id} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
+                    <td className="p-3 font-bold text-slate-900 whitespace-nowrap">
+                      <span className="px-2 py-1 rounded bg-amber-500 text-slate-950 font-black text-xs">
+                        #{idx + 1}
+                      </span>
+                    </td>
+                    <td className="p-3 max-w-[220px]">
+                      <span className="inline-block text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-200 uppercase tracking-wide mb-1">
+                        {item.priorityCode}
+                      </span>
+                      <div className="font-bold text-slate-900 text-xs leading-snug">
+                        {priority?.title || item.priorityTitle}
+                      </div>
+                      {priority?.target && (
+                        <div className="text-[11px] text-slate-500 mt-1 leading-tight">
+                          <span className="font-semibold text-slate-700">Target:</span> {priority.target}
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-3 font-semibold text-slate-800 max-w-[200px]">
+                      {item.title}
+                      <span className="block text-[11px] font-normal text-slate-500">
+                        {item.location}
+                      </span>
+                    </td>
+                    <td className="p-3 font-medium text-slate-900 max-w-[220px]">
+                      {item.recommendedAction.title}
+                      <span className="block text-[10px] text-amber-700 font-bold uppercase">
+                        {item.recommendedAction.actionCategory}
+                      </span>
+                    </td>
+                    <td className="p-3 text-slate-700 font-medium whitespace-nowrap">
+                      {item.recommendedAction.leadOwner}
+                    </td>
+                    <td className="p-3 whitespace-nowrap">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900">
+                        {item.recommendedAction.implementationHorizon.split(' ')[0]}
+                      </span>
+                    </td>
+                    <td className="p-3 text-slate-700 font-medium max-w-[220px]">
+                      {item.recommendedAction.targetKpi}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
