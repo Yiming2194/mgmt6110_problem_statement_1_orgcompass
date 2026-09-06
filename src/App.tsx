@@ -8,11 +8,11 @@ import { FrictionPoint } from './types';
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<1 | 2>(1);
 
-  // Pre-selected top 3 friction points for initial phone review, fully customizable by user
+  // Active 3 selected friction points, initially empty for user choice
   const [rankedIds, setRankedIds] = useState<[string | null, string | null, string | null]>([
-    'fp-01', // Changi GDP Cold-Chain Specialist Shortage
-    'fp-05', // Tuas Yard AGV Mechatronics Competency Deficit
-    'fp-07'  // Tuas Container Driver Shift Resistance & Automation Transition
+    null,
+    null,
+    null
   ]);
 
   // Handle assigning a specific friction point to Rank 1, 2, or 3
@@ -50,11 +50,6 @@ export default function App() {
     setRankedIds([null, null, null]);
   };
 
-  // Apply default top 3 recommendation
-  const handleApplyDefaultTopThree = () => {
-    setRankedIds(['fp-01', 'fp-05', 'fp-07']);
-  };
-
   // Navigation between screens without page reload
   const handleNavigate = (screen: 1 | 2) => {
     if (screen === 2 && rankedIds.filter(Boolean).length < 3) {
@@ -90,7 +85,6 @@ export default function App() {
             onAssignRank={handleAssignRank}
             onRemoveRank={handleRemoveRank}
             onResetRanks={handleResetRanks}
-            onApplyDefaultTopThree={handleApplyDefaultTopThree}
             onProceedToSummary={() => handleNavigate(2)}
           />
         ) : (

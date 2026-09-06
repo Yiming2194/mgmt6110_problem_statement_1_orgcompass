@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   ArrowRight, 
-  Sparkles, 
   RotateCcw, 
   Award, 
   UserCheck, 
@@ -9,7 +8,8 @@ import {
   Filter, 
   CheckCircle2, 
   Info,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Sparkles
 } from 'lucide-react';
 import { BusinessPriority, FrictionPoint, FrictionCategory } from '../types';
 import { BusinessPrioritiesCard } from './BusinessPrioritiesCard';
@@ -22,7 +22,6 @@ interface Screen1Props {
   onAssignRank: (frictionId: string, rankPosition: 1 | 2 | 3) => void;
   onRemoveRank: (frictionId: string) => void;
   onResetRanks: () => void;
-  onApplyDefaultTopThree: () => void;
   onProceedToSummary: () => void;
 }
 
@@ -33,7 +32,6 @@ export const Screen1PrioritiesAndFriction: React.FC<Screen1Props> = ({
   onAssignRank,
   onRemoveRank,
   onResetRanks,
-  onApplyDefaultTopThree,
   onProceedToSummary
 }) => {
   const [selectedPriorityFilter, setSelectedPriorityFilter] = useState<string | null>(null);
@@ -81,18 +79,9 @@ export const Screen1PrioritiesAndFriction: React.FC<Screen1Props> = ({
             </p>
           </div>
 
-          {/* Preset & Reset Quick Action */}
-          <div className="flex flex-row md:flex-col items-center sm:items-end gap-2 shrink-0">
-            <button
-              id="apply-recommended-preset-btn"
-              onClick={onApplyDefaultTopThree}
-              className="w-full sm:w-auto px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Load Board Recommendation</span>
-            </button>
-
-            {rankedCount > 0 && (
+          {/* Reset Quick Action */}
+          {rankedCount > 0 && (
+            <div className="flex flex-row md:flex-col items-center sm:items-end gap-2 shrink-0">
               <button
                 id="reset-rankings-btn"
                 onClick={onResetRanks}
@@ -101,8 +90,8 @@ export const Screen1PrioritiesAndFriction: React.FC<Screen1Props> = ({
                 <RotateCcw className="w-3 h-3" />
                 <span>Reset Selection</span>
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 
