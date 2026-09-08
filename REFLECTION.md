@@ -6,8 +6,12 @@
 ## Who are your users, and what changes for them?
 ---
 **Users:** The product is meant for internal users, particularly CEOs of entities that employed at least 1,000 employees in Singapore. Specific example of a logistic company is used in the master prompt. 
-**Current situation:** **(1)** HR prepares deck of slides containing descriptive information about talent development and succession. **(2)** Business leaders spend at least 2-3 hours monthly or bi-weekly on talent and organization discussions, and they are required to make decisions that matter to the business priorities and individual talent. **(3)** Alignment of the talent & organizational development strategy to business priorities are often diluted by HR driven objectives e.g. measuring activity over impact on the organization.
-**What OrgCompass do better:** **(1)** Show the talent or organization challenges that could hinder progress to meeting business priorities; no deck of slides **(2)** Helicopter view of the challenges enable decisions to be made according to business priorities **(3)** Decisions are more business driven than HR driven.
+**Current situation:** 
+**(1)** HR prepares deck of slides containing descriptive information about talent development and succession. 
+**(2)** Business leaders spend at least 2-3 hours monthly or bi-weekly on talent and organization discussions, and they are required to make decisions that matter to the business priorities and individual talent. 
+**(3)** Alignment of the talent & organizational development strategy to business priorities are often diluted by HR driven objectives e.g. measuring activity over impact on the organization.
+**What OrgCompass do better:** **(1)** Show the talent or organization challenges that could hinder progress to meeting business priorities; no deck of slides 
+**(2)** Helicopter view of the challenges enable decisions to be made according to business priorities **(3)** Decisions are more business driven than HR driven.
 
 ---
 
@@ -20,8 +24,10 @@
 
 ## In the loop, on the loop, out of the loop: where was your judgment actually needed?
 ---
-**The two moment:** **(1)** While verifying the first output against the goal list, I paid more attention the flow of presentation and layout and made some face value changes as in Prompt 2, 3 and 4. **(2)** I accepted almost every other output and wasn't sure what else I have missed.
-**In the loop:** Human should stay in the loop when the stakes are high, as in the case of OrgCompass where human should make the judgement and decision in ranking of the top three focus areas. Business context changes and new challenges may appear, that's where agent can't correctly judge what's matters to the business. There could also be missed opportunities had we leave it to the agent and trust their recommendation. We can stay out of the loop if the tasks are of low stakes (e.g. contained within organization), repetitive, grounded by rules and mistake-proof guardrails, decision is reversible, and there are clear audit trails for human oversight.
+**The two moment:** 
+**(1)** While verifying the first output against the goal list, I paid more attention the flow of presentation and layout and made some face value changes as in Prompt 2, 3 and 4. 
+**(2)** I accepted almost every other output and wasn't sure what else I have missed.
+Human should stay in the loop when the stakes are high, as in the case of OrgCompass where human should make the judgement and decision in ranking of the top three focus areas. Business context changes and new challenges may appear, that's where agent can't correctly judge what's matters to the business. There could also be missed opportunities had we leave it to the agent and trust their recommendation. We can stay out of the loop if the tasks are of low stakes (e.g. contained within organization), repetitive, grounded by rules and mistake-proof guardrails, decision is reversible, and there are clear audit trails for human oversight.
 
 ---
 
